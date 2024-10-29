@@ -11,6 +11,34 @@ import {
   Dimensions,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Audio } from 'expo-av';
+
+
+const playSound = async () => {
+  const { sound } = await Audio.Sound.createAsync(
+    require(`../assets/sounds/complete.wav`)
+  );
+  await sound.playAsync();
+  // Optionally unload the sound after playback
+  sound.setOnPlaybackStatusUpdate((status) => {
+    if (status.didJustFinish) {
+      sound.unloadAsync();
+    }
+  });
+};
+
+const playSound2 = async () => {
+  const { sound } = await Audio.Sound.createAsync(
+    require(`../assets/sounds/uncomplete.wav`)
+  );
+  await sound.playAsync();
+  // Optionally unload the sound after playback
+  sound.setOnPlaybackStatusUpdate((status) => {
+    if (status.didJustFinish) {
+      sound.unloadAsync();
+    }
+  });
+};
 
 const TodoList = ({ todos, onToggleComplete, onDelete, onUpdate }) => {
   const [isImageModalVisible, setIsImageModalVisible] = useState(false);
@@ -19,7 +47,16 @@ const TodoList = ({ todos, onToggleComplete, onDelete, onUpdate }) => {
   const renderItem = ({ item }) => (
     <View style={styles.itemContainer}>
       <TouchableOpacity
-        onPress={() => onToggleComplete(item.id)}
+        onPress={() => {
+          onToggleComplete(item.id);
+
+          if (item.completed) {
+            playSound2();
+          } else {
+            playSound();
+
+          }
+        }}
         style={styles.itemHeader}
       >
         <Ionicons

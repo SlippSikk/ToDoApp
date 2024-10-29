@@ -47,7 +47,6 @@ const UpdateTodo = ({ todo, onSave, onCancel }) => {
 
   const onChangeDate = (event, selectedDate) => {
     const currentDate = selectedDate || dueDate;
-    setShowPicker(false);
     setDueDate(currentDate);
   };
 
@@ -95,7 +94,7 @@ const UpdateTodo = ({ todo, onSave, onCancel }) => {
         {image ? <Image source={{ uri: image }} style={styles.image} /> : null}
       </View>
       <View style={styles.datePicker}>
-        <TouchableOpacity onPress={() => setShowPicker(true)} style={styles.dateButton}>
+        <TouchableOpacity onPress={() => setShowPicker(!showPicker)} style={styles.dateButton}>
           <Ionicons name="calendar" size={24} color="black" />
           <Text style={styles.dateText}>
             {dueDate ? dueDate.toDateString() : 'Set Due Date'}
