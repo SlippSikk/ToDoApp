@@ -19,7 +19,7 @@ const playSound = async () => {
     require(`../assets/sounds/complete.wav`)
   );
   await sound.playAsync();
-  // Optionally unload the sound after playback
+
   sound.setOnPlaybackStatusUpdate((status) => {
     if (status.didJustFinish) {
       sound.unloadAsync();
@@ -32,7 +32,7 @@ const playSound2 = async () => {
     require(`../assets/sounds/uncomplete.wav`)
   );
   await sound.playAsync();
-  // Optionally unload the sound after playback
+
   sound.setOnPlaybackStatusUpdate((status) => {
     if (status.didJustFinish) {
       sound.unloadAsync();

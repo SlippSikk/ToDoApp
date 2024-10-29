@@ -30,7 +30,7 @@ const Menu = ({ lists, currentListId, onSelectList, onAddList, onDeleteList, onC
       <TouchableOpacity
         style={[
           styles.listItem,
-          item.id === currentListId, // Highlight selected
+          item.id === currentListId,
         ]}
         onPress={() => onSelectList(item.id)}
       >
@@ -107,7 +107,7 @@ const Menu = ({ lists, currentListId, onSelectList, onAddList, onDeleteList, onC
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
-    backgroundColor: '#fff', // Ensure background covers entire screen
+    backgroundColor: '#fff',
   },
   container: {
     flex: 1,
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   listItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    flex: 1, // Allow text to take up remaining space
+    flex: 1,
   },
   listName: {
     marginLeft: 10,

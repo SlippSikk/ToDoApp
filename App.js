@@ -220,9 +220,9 @@ export default function App() {
           <Ionicons name="menu" size={28} color="#333" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>
-          {lists.find((list) => list.id === currentListId)?.name || 'No List Selected'}
+          {lists.find((list) => list.id === currentListId)?.name}
         </Text>
-        <View style={{ width: 28 }} /> 
+        <View style={{ width: 28 }} />
       </View>
 
       <SearchBar onSearch={handleSearch} />
@@ -287,10 +287,10 @@ export default function App() {
       >
         <Menu
           lists={lists}
-          currentListId={currentListId} // Pass currentListId here
+          currentListId={currentListId}
           onSelectList={handleSelectList}
           onAddList={handleAddList}
-          onDeleteList={handleDeleteList} // Pass the handler
+          onDeleteList={handleDeleteList}
           onClose={() => setIsMenuVisible(false)}
         />
       </Modal>

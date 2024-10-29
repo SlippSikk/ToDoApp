@@ -23,7 +23,7 @@ const AddTodo = ({ onAdd, onCancel }) => {
   const [showPicker, setShowPicker] = useState(false);
 
   const pickImage = async () => {
-    // Ask for permission
+
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status !== 'granted') {
       alert('Permission to access media library is required!');
@@ -44,7 +44,7 @@ const AddTodo = ({ onAdd, onCancel }) => {
 
   const onChangeDate = (event, selectedDate) => {
     const currentDate = selectedDate || dueDate;
-    // setShowPicker(false);
+
     setDueDate(currentDate);
   };
 
